@@ -19,6 +19,8 @@ Hệ thống giúp giảm công sức ghi chỉ số thủ công, tăng tính ch
 - **HTML Template**: Giao diện upload và hiển thị ảnh/giá trị đọc được.
 
 ## Sơ đồ hoạt động
+![image](https://github.com/user-attachments/assets/d2238a1f-247e-4d7c-9688-56ce2260603f)
+
 
 1. ESP32-CAM chụp ảnh công tơ điện định kỳ.
 2. ESP8266 gửi ảnh qua HTTP POST về Flask Server.
