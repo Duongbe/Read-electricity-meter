@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kết quả nhận dạng công tơ điện (OCR)</title>
+</head>
+<body>
+    <h2>Kết quả nhận dạng công tơ điện (OCR)</h2>
+    {% for img_name, roi_text, full_text in results %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+            <b>filename:</b> {{ img_name }}<br>
+
+            <!-- Ảnh gốc -->
+            Ảnh gốc: <img src="{{ url_for('get_image', filename=img_name) }}" width="300"><br>
+
+            <!-- ROI -->
+            {% set roi_filename = 'roi_' + img_name %}
+            {% set bin_filename = 'bin_' + img_name %}
+
+            Vùng số điện kế (ROI): <img src="{{ url_for('get_image', filename=roi_filename) }}" height="40"><br>
+            Ảnh nhị phân xử lý: <img src="{{ url_for('get_image', filename=bin_filename) }}" height="40"><br>
+
+            <b style="color: green; font-size: 24px;">Chỉ số kWh:</b> <span style="font-size: 24px;">{{ roi_text }}</span><br>
+            <b>Toàn ảnh (OCR):</b> {{ full_text }}
+        </div>
+    {% endfor %}
+    <script>
+    // Tự động tải lại trang mỗi 10 giây
+        setInterval(function () {
+        window.location.reload();
+        }, 4000); // 10 giây
+    </script>
+
+</body>
+</html>
